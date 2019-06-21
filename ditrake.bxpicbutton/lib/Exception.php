@@ -1,6 +1,6 @@
 <?php
 
-namespace ditrake\bxrequestqueue;
+namespace ditrake\bxpicbutton;
 
 /**
  * Класс для исключений модуля.

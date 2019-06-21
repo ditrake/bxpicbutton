@@ -4,6 +4,7 @@ use Bitrix\Main\Localization\Loc;
 use Bitrix\Main\ModuleManager;
 use Bitrix\Main\IO\Directory;
 use Bitrix\Main\Application;
+use \Bitrix\Main\EventManager;
 
 Loc::loadMessages(__FILE__);
 
@@ -48,12 +49,14 @@ class ditrake_bxpicbutton extends CModule
      */
     public function installDB()
     {
-        RegisterModuleDependences(
+        $eventManager = EventManager::getInstance();
+
+        $eventManager->registerEventHandler(
             'fileman',
             'OnBeforeHTMLEditorScriptRuns',
             'ditrake.bxpicbutton',
-            'HtmlEditorPictureButton',
-            'OnIncludeHTMLEditorScriptRuns'
+            'ditrake\bxpicbutton\HtmlEditorPictureButton',
+            'OnBeforeHTMLEditorScriptRuns'
         );
 
         return true;
@@ -66,12 +69,14 @@ class ditrake_bxpicbutton extends CModule
      */
     public function uninstallDB()
     {
-        UnRegisterModuleDependences(
+        $eventManager = EventManager::getInstance();
+
+        $eventManager->unRegisterEventHandler(
             'fileman',
             'OnBeforeHTMLEditorScriptRuns',
             'ditrake.bxpicbutton',
-            'HtmlEditorPictureButton',
-            'OnIncludeHTMLEditorScriptRuns'
+            'ditrake\bxpicbutton\HtmlEditorPictureButton',
+            'OnBeforeHTMLEditorScriptRuns'
         );
 
         return true;

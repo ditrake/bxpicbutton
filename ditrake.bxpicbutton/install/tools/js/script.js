@@ -22,10 +22,10 @@ BX.addCustomEvent('OnEditorInitedBefore', function(editor)
             var SotbitDialogAddImg = new BX.CDialog({
 
                 /*Заголовок модального окна из языкового файла*/
-                title: BX.message('SOTBIT_HTML_EDITOR_MODAL_IMAGES_TITLE'),
+                title: BX.message('DITRAKE_HTML_EDITOR_MODAL_IMAGES_TITLE'),
 
                 /*Путь до файла контента отображаемого в модальном окне*/
-                content_url: '/bitrix/tools/sotbit.htmleditoraddition/include/ajax/loadImg.php',
+                content_url: '/bitrix/modules/ditrake.bxpicbutton/lib/tools/loadImg.php',
 
                 /*Запрос к файлу с контентом модального окна*/
                 content_post: 'ajax=yes&action=openWindow',
@@ -38,7 +38,7 @@ BX.addCustomEvent('OnEditorInitedBefore', function(editor)
                     /*Описание кнопки загрузку изображений в визуальный редактор*/
                     {
                         /*Заголовок кнопки из языкового файла*/
-                        title: BX.message('SOTBIT_HTML_EDITOR_MODAL_IMAGES_BTN_LOADIMG'),
+                        title: BX.message('DITRAKE_HTML_EDITOR_MODAL_IMAGES_BTN_LOADIMG'),
                         name: 'loadImg',
                         id: 'loadImg',
                         /*Действие по нажатию на кнопку*/
@@ -56,11 +56,9 @@ BX.addCustomEvent('OnEditorInitedBefore', function(editor)
                             _thisBtn.parentWindow.Close();
 
                         },
-
-                        /*Вывод кнопки отмены в модальном окне*/
-                        BX.CDialog.prototype.btnCancel,
-
-                    }
+                    },
+                    /*Вывод кнопки отмены в модальном окне*/
+                    BX.CDialog.prototype.btnCancel,
                 ]
             });
 
